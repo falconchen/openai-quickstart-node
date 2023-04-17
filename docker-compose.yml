@@ -1,0 +1,16 @@
+version: '3'
+services:
+  openai-quick-start-node:
+    build:
+      context: .
+      dockerfile: Dockerfile    
+    ports:
+      - "3000:3000"
+    environment:
+      - http_proxy=http://192.168.6.1:8080/
+      - https_proxy=http://192.168.6.1:8088/
+    volumes:
+      - ${PWD}:/data
+    stdin_open: true
+    tty: true
+    restart: unless-stopped
